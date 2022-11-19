@@ -3,7 +3,8 @@ import java.io.Console;
 
 public class App {
 
-    // #BANNER
+    //* BANNER
+    // Printa un ascii art 
     static void print_banner(){
 
         System.out.println("'########:::::'###::::'##::: ##:'##:::'##:");
@@ -17,7 +18,7 @@ public class App {
         
     }
 
-    // #ADD UTENTE
+    // * ADD UTENTE
     static int add_utente(Utente[] u, int n_u, Scanner s, Console con, String[] seriali, int MAX_NS){
 
         int eta;
@@ -43,7 +44,7 @@ public class App {
     }
 
 
-    // #ADD ACCOUNT
+    // * ADD ACCOUNT
     static int add_account(Utente[] u, int n_u, CurrentAccount[] c0, int n_c, Scanner s, Console con){
 
         String nome, cognome, cu, nc, cod;
@@ -122,7 +123,7 @@ public class App {
 
     }
 
-    // #RIMUOVI UTENTE
+    // * RIMUOVI UTENTE
     static int rem_utente(Utente[] u, int n_u, Scanner s, Console con){
 
         int i;
@@ -165,7 +166,7 @@ public class App {
     }
 
 
-    // #CHIUDI CONTO
+    // * CHIUDI CONTO
     static int block_curr(Utente[] u, CurrentAccount[] c0, int n_c, Scanner s, Console con){
 
         int i;
@@ -207,7 +208,7 @@ public class App {
         return n_c;
     }
 
-    // #Users
+    // * Users
 
     static void users(Utente[] u, int n_u, Console con){
 
@@ -234,7 +235,7 @@ public class App {
 
     }
 
-    // #Conti
+    // * Conti
 
     static void conti(CurrentAccount[] c0, int n_c, Console con){
 
@@ -271,7 +272,8 @@ public class App {
 
     }
 
-    // #LOGIN
+    // * LOGIN
+    // ! BUG
     static void login(Utente[] u, CurrentAccount[] c, int n_u, Scanner s, Console con){
 
         int i, sce, j, k;
@@ -563,7 +565,7 @@ public class App {
         return null;        
     }
 
-    // #CLEAR SCREEN
+    // * CLEAR SCREEN
     static void clear_screen(){
 
         System.out.print("\033[H\033[2J"); 
@@ -576,7 +578,7 @@ public class App {
 
 
 
-    // #MAIN
+    // * MAIN
     public static void main(String[] args) {
 
         Scanner s = new Scanner(System.in);
@@ -793,10 +795,7 @@ public class App {
 
 
 
-/* TO DO */
-/*FINIRE LOGIN:
- * PRELIEVO
- * VERSAMENTO
- * ECC..
- * Auto serializazione dell'utente
+/**
+ * TODO: 
+ *      Sistemare bug nel login, abbellire il codice
  */
