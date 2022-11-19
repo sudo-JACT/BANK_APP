@@ -9,3 +9,5 @@
 
 >*TODO:*
 >- Abbelire il codice
+
+*Consiglio di instalare l'estensione "better comments" di visual studio code per una migliore navigazione nel codice*
