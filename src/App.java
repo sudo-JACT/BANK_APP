@@ -66,8 +66,8 @@ public class App {
 
                 System.out.print("Codice Univoco: ");
                 cu = s.next();
-                System.out.print("Numero conto: ");
-                nc = s.next();
+                /*System.out.print("Numero conto: ");
+                nc = s.next();*/
                 System.out.print("Codice conto: ");
                 cod = s.next();
                 System.out.print("Saldo: ");
@@ -81,8 +81,8 @@ public class App {
                     if(u[i].get_cu().equals(cu)){
 
 
-                        c0[n_c] = new CurrentAccount(u[i], saldo, nc, cod);
-                        u[i].add_current(c0[n_c], nc, cod);
+                        c0[n_c] = new CurrentAccount(u[i], saldo, cod);
+                        u[i].add_current(c0[n_c], c0[n_c].get_nc(), cod);
                         System.out.println(c0[n_c].toString(0));
                         con.readLine();
                         F = true;
@@ -106,13 +106,13 @@ public class App {
                     
             default:
 
-                System.out.print("Numero conto: ");
-                nc = s.next();
+                /*System.out.print("Numero conto: ");
+                nc = s.next();*/
                 System.out.print("Codice conto: ");
                 cod = s.next();
 
-                c0[n_c] = new CurrentAccount(nc, cod);
-                System.out.println(c0[n_c].get_nc());
+                c0[n_c] = new CurrentAccount(cod);
+                System.out.println("Numero conto >> " + c0[n_c].get_nc());
                 con.readLine();
                 n_c++;
                     
@@ -274,7 +274,7 @@ public class App {
 
     // * LOGIN
     // ! BUG
-    static void login(Utente[] u, CurrentAccount[] c, int n_u, Scanner s, Console con){
+    static void login(Utente[] u, CurrentAccount[] c, int n_u, int n_c, Scanner s, Console con){
 
         int i, sce, j, k;
         float q;
@@ -330,7 +330,7 @@ public class App {
                                     q = s.nextFloat();
                                     acc.prelev(scelt, cod, q);
                                     System.out.println("Saldo attuale " + acc.get_saldo());
-                                    u[i].set_conto(i, acc);
+                                    u[i].set_conto(j, acc);
                                     con.readLine();
 
                                 }
@@ -376,7 +376,7 @@ public class App {
                                     q = s.nextFloat();
                                     acc.vers(scelt, cod, q);
                                     System.out.println("Saldo attuale " + acc.get_saldo());
-                                    u[i].set_conto(i, acc);
+                                    u[i].set_conto(j, acc);
                                     con.readLine();
 
                                 }
@@ -422,7 +422,7 @@ public class App {
 
                                     F3 = false;
 
-                                    for(k=0; k < u[i].get_conti(); k++){
+                                    for(k=0; k < n_c; k++){
 
                                         if(c[k].get_nc().equals(cont_dest)){
 
@@ -434,7 +434,7 @@ public class App {
                                             q = s.nextFloat();
 
                                             acc.bonifico(acc2, cont_dest, scelt, cod, q);
-                                            c[k] = acc2;
+                                            //c[k] = acc2;
 
                                         }
                                         
@@ -448,7 +448,7 @@ public class App {
                                     }else{
 
                                         System.out.println("Saldo attuale " + acc.get_saldo());
-                                        u[i].set_conto(i, acc);
+                                        //u[i].set_conto(j, acc);
                                         con.readLine();
 
                                     }
@@ -763,7 +763,7 @@ public class App {
 
                 case 8:
 
-                    login(Utenti, c0, n_u, s, con);
+                    login(Utenti, c0, n_u, n_c, s, con);
                     
                     break;
 

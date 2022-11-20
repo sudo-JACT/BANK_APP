@@ -1,5 +1,7 @@
 public class CurrentAccount {
 
+    static int Account_Created = 0;
+
     private final Utente[] intestatari = new Utente[1000];
     private int N_intestatari=0;
     private float saldo=0;
@@ -7,20 +9,22 @@ public class CurrentAccount {
     private final String numero_conto;
     private boolean chiuso=false;
 
-    public CurrentAccount(Utente u, float s, String nc, String cod){
+    public CurrentAccount(Utente u, float s, String cod){
 
         this.intestatari[0] = u;
         this.N_intestatari++;
         this.saldo = s;
-        this.numero_conto = nc;
+        this.numero_conto = "" + (CurrentAccount.Account_Created + 1);
         this.codice = cod;
+        CurrentAccount.Account_Created++;
 
     }
 
-    public CurrentAccount(String nc, String cod){
+    public CurrentAccount(String cod){
 
-        this.numero_conto = nc;
+        this.numero_conto =  "" + (CurrentAccount.Account_Created + 1);
         this.codice = cod;
+        CurrentAccount.Account_Created++;
     }
 
 
@@ -56,7 +60,7 @@ public class CurrentAccount {
 
     public float vers(String nc, String cod, float s){
 
-        if(this.chiuso == false && this.numero_conto.equals(nc) && this.codice.equals(cod) && this.saldo > 0){
+        if(this.chiuso == false && this.numero_conto.equals(nc) && this.codice.equals(cod)){
 
             this.saldo += s;
 
