@@ -272,6 +272,38 @@ public class App {
 
     }
 
+
+    static void red_cont(CurrentAccount[] c0, int n_c, Console con){
+
+        int i;
+
+        if(n_c == 0){
+
+            System.out.println("Ancora nessun Conto creato");
+            con.readLine();
+
+                        
+
+        }else{
+
+            for(i=0; i < n_c; i++){
+
+                if(c0[i].get_saldo() <= 0){
+
+                    System.out.println(i+1 + ")" + c0[i].get_nc() + "(" + c0[i].get_saldo() + ")");
+
+                }
+
+                        
+
+            }
+
+        }
+                    
+        con.readLine();
+
+    }
+
     // * LOGIN
     // ! BUG
     static void login(Utente[] u, CurrentAccount[] c, int n_u, int n_c, Scanner s, Console con){
@@ -666,7 +698,7 @@ public class App {
 
             clear_screen();
             print_banner();
-            System.out.print("Opzioni:\n1)Crea Utente (Utenti attuali: " + n_u + ")\n2)Crea Conto (Conti attuali: " + n_c + ")\n3)Rimuovi Utente\n4)Chiudi Conto\n5)Modifica Conto\n6)Mostra Utenti\n7)Mostra Conti\n8)Accedi\n9)Esci\n>>");
+            System.out.print("Opzioni:\n1)Crea Utente (Utenti attuali: " + n_u + ")\n2)Crea Conto (Conti attuali: " + n_c + ")\n3)Rimuovi Utente\n4)Chiudi Conto\n5)Modifica Conto\n6)Mostra Utenti\n7)Mostra Conti\n8)Mostra Conti in Rosso\n9)Accedi\n10)Esci\n>>");
 
             c = s.nextInt();
 
@@ -821,14 +853,22 @@ public class App {
                     break;
 
 
+
                 case 8:
+
+                    red_cont(c0, n_c, con);
+
+                    break;
+
+
+                case 9:
 
                     login(Utenti, c0, n_u, n_c, s, con);
                     
                     break;
 
 
-                case 9:
+                case 10:
 
                     T = false;
                     System.out.println("Uscendo...");
