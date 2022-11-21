@@ -299,7 +299,7 @@ public class App {
                     System.out.println("Benvenuto/a " + u[i].get_name() + " " + u[i].get_cognome());
 
 
-                    System.out.print("Opzioni:\n1)Preleva\n2)Versa\n3)Fai bonifico\n4)Esci\n>>");
+                    System.out.print("Opzioni:\n1)Preleva\n2)Versa\n3)Fai bonifico\n4)Patrimonio\n5)Movimenti\n6)Esci\n>>");
                     sce = s.nextInt();
 
                     switch (sce) {
@@ -468,6 +468,66 @@ public class App {
                             break;
 
                         case 4:
+
+                            float patrim = 0;
+
+                            for(j=0; j < u[i].get_conti(); j++){
+
+                                acc = u[i].get_account(j);
+
+                                System.out.println(j+1 + ")" + acc.get_nc() + " (" + acc.get_saldo() + ")");
+                                patrim += acc.get_saldo();
+
+                            }
+                            System.out.println("Il tuo patrimonio è di : " + patrim + " euro");
+                            con.readLine();
+
+                            break;
+
+                        case 5:
+
+                            for(j=0; j < u[i].get_conti(); j++){
+
+                                acc = u[i].get_account(j);
+
+                                System.out.println(j+1 + ")" + acc.get_nc() + " (" + acc.get_saldo() + ")");
+
+                            }
+                            System.out.print("Numero Conto >>");
+                            scelt = s.next();
+
+                            for(j=0; j < u[i].get_conti(); j++){
+
+                                acc = u[i].get_account(j);
+
+                                if(acc.get_nc().equals(scelt)){
+
+                                    F2 = true;
+                                    int b;
+
+                                    for(b=0; b < acc.get_n_mov(); b++){
+
+                                        System.out.println(acc.get_movimenti(b));
+
+                                    }
+                                    con.readLine();
+
+                                }
+
+
+                            }
+
+                            if(!F2){
+
+                                System.out.println("Conto " + scelt + " non trovato");
+                                con.readLine();
+
+                            }
+
+
+                            break;
+
+                        case 6:
                             
                             T = false;
 

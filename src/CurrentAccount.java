@@ -8,6 +8,9 @@ public class CurrentAccount {
     private final String codice;
     private final String numero_conto;
     private boolean chiuso=false;
+    private float scoperto = -500;
+    private String[] mov_s = new String[10000];
+    private int n_mov = 0;
 
     public CurrentAccount(Utente u, float s, String cod){
 
@@ -45,9 +48,12 @@ public class CurrentAccount {
 
     public float prelev(String nc, String cod, float s){
 
-        if(this.chiuso == false && this.numero_conto.equals(nc) && this.codice.equals(cod) && this.saldo > 0){
+        if(this.chiuso == false && this.numero_conto.equals(nc) && this.codice.equals(cod) && this.saldo >= this.scoperto){
 
             this.saldo -= s;
+
+            this.mov_s[this.n_mov] = "Prelevato " + s + " euro";
+            this.n_mov++;
 
             return s;
 
@@ -64,6 +70,9 @@ public class CurrentAccount {
 
             this.saldo += s;
 
+            this.mov_s[this.n_mov] = "Versato " + s + " euro";
+            this.n_mov++;
+
             return this.saldo;
 
         }else{
@@ -76,7 +85,7 @@ public class CurrentAccount {
 
     public boolean bonifico(CurrentAccount c, String nc1, String nc2, String cod, float s){
 
-        if(this.chiuso == false && this.numero_conto.equals(nc2) && this.codice.equals(cod) && this.saldo > 0){
+        if(this.chiuso == false && this.numero_conto.equals(nc2) && this.codice.equals(cod) && this.saldo >= this.scoperto){
 
             if(c.get_nc().equals(nc1)){
 
@@ -84,6 +93,8 @@ public class CurrentAccount {
 
                 if(c.vers(nc1, c.get_cod(), s) != -1){
 
+                    this.mov_s[this.n_mov] = "Bonifico di " + s + " euro effetuato a " + nc1;
+                    this.n_mov++;
                     return true;
 
                 }else{
@@ -184,6 +195,25 @@ public class CurrentAccount {
     public int get_n_intestatari(){
 
         return N_intestatari;
+    }
+
+    public int get_n_mov(){
+
+        return this.n_mov;
+
+    }
+
+    public String get_movimenti(int a){
+
+        if(a <= this.n_mov){
+
+            return mov_s[a];
+
+        }else{
+
+            return null;
+
+        }
     }
 
     public String toString(int a){
