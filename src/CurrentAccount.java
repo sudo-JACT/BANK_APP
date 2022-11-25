@@ -1,3 +1,11 @@
+/**
+ * 
+ * @version 1.2.0
+ * 
+ * @author 1MD0NK3Y
+ * 
+ */
+
 public class CurrentAccount {
 
     static int Account_Created = 0;
