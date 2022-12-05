@@ -24,7 +24,7 @@ public class App {
         int eta;
         String nome, cognome, cu, se;
 
-        System.out.print("Nome: ");
+        System.out.print("Nome: "); 
         nome = s.next();
         System.out.print("Cognome: ");
         cognome = s.next();
@@ -32,7 +32,7 @@ public class App {
         eta = s.nextInt();
         System.out.print("Sesso: ");
         se = s.next();
-        cu = serialize(seriali, MAX_NS, nome, cognome, se, eta);
+        cu = serialize(seriali, MAX_NS, nome, cognome, se, eta); // * Richiamo la funzione per la serializazione automatica dell'utente
 
         u[n_u] = new Utente(nome, cognome, eta, se.charAt(0), cu);
         System.out.println(u[n_u].toString());
@@ -305,7 +305,6 @@ public class App {
     }
 
     // * LOGIN
-    // ! BUG
     static void login(Utente[] u, CurrentAccount[] c, int n_u, int n_c, Scanner s, Console con){
 
         int i, sce, j, k;
@@ -893,9 +892,3 @@ public class App {
 
 }
 
-
-
-/**
- * TODO: 
- *      Sistemare bug nel login, abbellire il codice
- */
